@@ -31,7 +31,7 @@ namespace Com.Efrata.Service.Sales.Lib.PDFTemplates
             Font bold_font = FontFactory.GetFont(BaseFont.HELVETICA_BOLD, BaseFont.CP1250, BaseFont.NOT_EMBEDDED, 7);
 
             #region Header
-            document.Add(new Paragraph("PT.EFRATA RETAILINDO", company_font) { Alignment = Element.ALIGN_LEFT, Leading = 0, MultipliedLeading = 1 });
+            document.Add(new Paragraph("PT.EFRATA GARMINDO UTAMA", company_font) { Alignment = Element.ALIGN_LEFT, Leading = 0, MultipliedLeading = 1 });
             document.Add(new Paragraph("RO GARMENT", title_font) { Alignment = Element.ALIGN_LEFT, Leading = 0, MultipliedLeading = 1 });
             #endregion
 

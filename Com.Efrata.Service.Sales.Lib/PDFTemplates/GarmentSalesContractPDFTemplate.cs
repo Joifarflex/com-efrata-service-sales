@@ -522,11 +522,12 @@ namespace Com.Efrata.Service.Sales.Lib.PDFTemplates
             cb.BeginText();
 
             BaseFont bf = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1250, BaseFont.NOT_EMBEDDED);
+            BaseFont bf_bold = BaseFont.CreateFont(BaseFont.HELVETICA_BOLD, BaseFont.CP1250, BaseFont.NOT_EMBEDDED);
 
             float height = writer.PageSize.Height, width = writer.PageSize.Width;
             float marginLeft = document.LeftMargin - 10, marginTop = document.TopMargin, marginRight = document.RightMargin - 10;
 
-            cb.SetFontAndSize(bf, 6);
+            cb.SetFontAndSize(bf_bold, 12);
 
             //#region LEFT
 
@@ -554,16 +555,20 @@ namespace Com.Efrata.Service.Sales.Lib.PDFTemplates
             var headOfficeX = width / 2 - 10;
             var headOfficeY = height - marginTop + 55;
 
-            byte[] imageByte = Convert.FromBase64String(Base64ImageStrings.LOGO_NAME);
-            Image image = Image.GetInstance(imageByte);
-            if (image.Width > 160)
-            {
-                float percentage = 0.0f;
-                percentage = 140 / image.Width;
-                image.ScalePercent(percentage * 60);
-            }
-            image.SetAbsolutePosition(headOfficeX - (image.ScaledWidth / 2), headOfficeY);
-            cb.AddImage(image, inlineImage: true);
+            //byte[] imageByte = Convert.FromBase64String(Base64ImageStrings.LOGO_NAME);
+            //Image image = Image.GetInstance(imageByte);
+            //if (image.Width > 160)
+            //{
+            //    float percentage = 0.0f;
+            //    percentage = 140 / image.Width;
+            //    image.ScalePercent(percentage * 60);
+            //}
+            //image.SetAbsolutePosition(headOfficeX - (image.ScaledWidth / 2), headOfficeY);
+            //cb.AddImage(image, inlineImage: true);
+
+            
+            cb.ShowTextAligned(PdfContentByte.ALIGN_CENTER, "PT. EFRATA GARMINDO UTAMA", headOfficeX, headOfficeY, 0);
+            cb.SetFontAndSize(bf, 6);
 
             string[] headOffices = {
                 "Head Office : Kel. Banaran, Kec.Grogol, Kab. Sukoharjo, Jawa Tengah, T.(+62 271)719911, F.(+62 271) 719911",
@@ -572,7 +577,7 @@ namespace Com.Efrata.Service.Sales.Lib.PDFTemplates
             };
             for (int i = 0; i < headOffices.Length; i++)
             {
-                cb.ShowTextAligned(PdfContentByte.ALIGN_CENTER, headOffices[i], headOfficeX, headOfficeY - image.ScaledHeight - (i * 10) + 10, 0);
+                cb.ShowTextAligned(PdfContentByte.ALIGN_CENTER, headOffices[i], headOfficeX, headOfficeY - 20 - (i * 10) + 10, 0);
             }
 
             #endregion
@@ -604,14 +609,14 @@ namespace Com.Efrata.Service.Sales.Lib.PDFTemplates
 
             #region WATERMARK
 
-            byte[] imageByteCenter = Convert.FromBase64String(Base64ImageStrings.LOGO_WATERMARK);
-            Image imageCenter = Image.GetInstance(imageByteCenter);
-            float percentageImageCenter = 0.0f;
-            percentageImageCenter = 400 / imageCenter.Width;
-            imageCenter.ScalePercent(percentageImageCenter * 100);
-            imageCenter.SetAbsolutePosition((width / 2) - imageCenter.ScaledWidth / 2, (height / 2) - imageCenter.ScaledHeight / 2);
-            //cb.AddImage(imageCenter);
-            document.Add(imageCenter);
+            //byte[] imageByteCenter = Convert.FromBase64String(Base64ImageStrings.LOGO_WATERMARK);
+            //Image imageCenter = Image.GetInstance(imageByteCenter);
+            //float percentageImageCenter = 0.0f;
+            //percentageImageCenter = 400 / imageCenter.Width;
+            //imageCenter.ScalePercent(percentageImageCenter * 100);
+            //imageCenter.SetAbsolutePosition((width / 2) - imageCenter.ScaledWidth / 2, (height / 2) - imageCenter.ScaledHeight / 2);
+            ////cb.AddImage(imageCenter);
+            //document.Add(imageCenter);
 
             #endregion
 

@@ -82,7 +82,7 @@ namespace Com.Efrata.Service.Sales.Lib.PDFTemplates
             tableBody.SpacingAfter = 0.5f;
             document.Add(tableBody);
 
-            string ParagraphString1 = "          Bertindak untuk dan atas nama PT Efrata Retailindo, selanjutnya disebut “Penjual”";
+            string ParagraphString1 = "          Bertindak untuk dan atas nama PT Efrata Garmindo Utama, selanjutnya disebut “Penjual”";
             Paragraph Paragraph1 = new Paragraph(ParagraphString1, normal_font) { Alignment = Element.ALIGN_LEFT };
             Paragraph1.SpacingAfter = 10f;
             document.Add(Paragraph1);
@@ -567,7 +567,7 @@ namespace Com.Efrata.Service.Sales.Lib.PDFTemplates
             signature.AddCell(cell_signature);
             cell_signature.Phrase = new Phrase("(" + viewModel.RecipientName + ")", normal_font);
             signature.AddCell(cell_signature);
-            cell_signature.Phrase = new Phrase("PT Efrata Retailindo", normal_font);
+            cell_signature.Phrase = new Phrase("PT Efrata Garmindo Utama", normal_font);
             signature.AddCell(cell_signature);
             string buyerName = buyer["Name"] != null ? buyer["Name"].ToString() : "";
             cell_signature.Phrase = new Phrase(buyerName, normal_font);
