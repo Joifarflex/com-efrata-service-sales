@@ -358,13 +358,15 @@ namespace Com.Efrata.Service.Sales.Lib.PDFTemplates
             bodyContentPembayaran.Phrase = new Phrase(viewModel.PaymentMethod, normal_font);
             tablePembayaran.AddCell(bodyContentPembayaran);
 
+            var dp = viewModel.DownPayment!=null? viewModel.DownPayment * totalAmount / 100 : 0;
+
             bodyContentPembayaran.Phrase = new Phrase("2.", normal_font);
             tablePembayaran.AddCell(bodyContentPembayaran);
             bodyContentPembayaran.Phrase = new Phrase("Down Payment (DP)", normal_font);
             tablePembayaran.AddCell(bodyContentPembayaran);
             bodyContentPembayaran.Phrase = new Phrase(":", normal_font);
             tablePembayaran.AddCell(bodyContentPembayaran);
-            bodyContentPembayaran.Phrase = new Phrase(viewModel.DownPayment, normal_font);
+            bodyContentPembayaran.Phrase = new Phrase(viewModel.DownPayment.ToString() + "% ("+ Number.ToRupiah(dp) + ")", normal_font);
             tablePembayaran.AddCell(bodyContentPembayaran);
 
             bodyContentPembayaran.Phrase = new Phrase("3.", normal_font);
@@ -561,7 +563,7 @@ namespace Com.Efrata.Service.Sales.Lib.PDFTemplates
             cell_signature.Phrase = new Phrase(" ", normal_font);
             signature.AddCell(cell_signature);
 
-            cell_signature.Phrase = new Phrase("( Haenis Gunarto )", normal_font);
+            cell_signature.Phrase = new Phrase("( Bantu Harrison Silaen )", normal_font);
             signature.AddCell(cell_signature);
             cell_signature.Phrase = new Phrase("(" + viewModel.RecipientName + ")", normal_font);
             signature.AddCell(cell_signature);

@@ -80,11 +80,11 @@ namespace Com.Efrata.Service.Sales.Lib.BusinessLogic.Facades.Garment
 
                 foreach (var q in data)
                 {
-                    if (q.LeadTime == 40)
+                    if (q.LeadTime == 35)
                     {
-                        Count35 = data.Count(d => d.LeadTime == 40);
-                        Count35Ok = data.Count(d => d.DateDiff >= 35 && d.LeadTime == 40);
-                        Count35NotOk = data.Count(d => d.DateDiff < 35 && d.LeadTime == 40);
+                        Count35 = data.Count(d => d.LeadTime == 35);
+                        Count35Ok = data.Count(d => d.DateDiff >= 30 && d.LeadTime == 35);
+                        Count35NotOk = data.Count(d => d.DateDiff < 30 && d.LeadTime == 35);
                         if (Count35Ok > 0)
                         {
                             Percent35Ok = ((decimal)Count35Ok / Count35).ToString("P", new CultureInfo("id-ID"));
