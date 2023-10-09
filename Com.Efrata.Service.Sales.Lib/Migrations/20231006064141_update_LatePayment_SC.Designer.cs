@@ -4,14 +4,16 @@ using Com.Efrata.Service.Sales.Lib;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Com.Efrata.Service.Sales.Lib.Migrations
 {
     [DbContext(typeof(SalesDbContext))]
-    partial class SalesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231006064141_update_LatePayment_SC")]
+    partial class update_LatePayment_SC
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -2653,7 +2655,7 @@ namespace Com.Efrata.Service.Sales.Lib.Migrations
 
                     b.Property<bool>("DocPrinted");
 
-                    b.Property<double?>("DownPayment")
+                    b.Property<string>("DownPayment")
                         .HasMaxLength(500);
 
                     b.Property<string>("FOB")
